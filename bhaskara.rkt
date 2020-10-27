@@ -5,11 +5,11 @@
   (-(* b b ) (* 4 a c))
 )
 
-(define (findX2 a b c)
+(define (findX1 a b c)
   (/ (+(- b) (sqrt (delta a b c))) (* 2 a))
 )
 
-(define (findX1 a b c)
+(define (findX2 a b c)
   (/ (-(- b) (sqrt (delta a b c))) (* 2 a))
 )
 
