@@ -1,7 +1,6 @@
-# paradigmas-racket-lang
+# Pontos extras
 
 Falta fazer algo para pontos extras
-
 
 Executar no browser +3 pontos
 
