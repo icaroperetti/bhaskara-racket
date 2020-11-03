@@ -31,8 +31,8 @@
   (/ ( - b )(* 2 a))
 )
 
-(define(show-Xv b a)
-   (write(findXv b a))
+(define(show-Xv a b)
+   (write(findXv a b))
 )
 
 (define (findYv a b c)
