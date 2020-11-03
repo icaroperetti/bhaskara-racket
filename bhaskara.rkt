@@ -27,7 +27,7 @@
  )
 
 
-(define (findXv b a)
+(define (findXv a b)
   (/ ( - b )(* 2 a))
 )
 
