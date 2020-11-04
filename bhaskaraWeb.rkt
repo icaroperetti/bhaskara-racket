@@ -1,5 +1,5 @@
 ;Documentacoes Utilizadas: https://docs.racket-lang.org/continue/, https://docs.racket-lang.org/web-server/run.html
-;http://matt.might.net/articles/low-level-web-in-racket/  (principalmente para o envio de dados do form.
+;http://matt.might.net/articles/low-level-web-in-racket/  (principalmente para o envio de dados do form).
 
 ; biblioteca
 #lang racket
@@ -61,9 +61,7 @@
      ; imprimir os dados
      (response/xexpr
       `(html
-        (head (title "Bhaskara - LISP")
-      
-              )
+        (head (title "Bhaskara - LISP"))
         
         (body (center(h1  "Resultados")
          (p "Delta = ", (number->string delta))
