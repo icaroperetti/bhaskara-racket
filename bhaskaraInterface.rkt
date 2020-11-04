@@ -38,12 +38,12 @@
                              [vert-margin 25]
                              [horiz-margin 10]
                              [callback (lambda (button event)
-                  (write-file "teste.txt"  ( ~a "\nA " (string->number (send a-input get-value))
-                                             "\nB " (string->number (send b-input get-value))
-                                             "\nC " (string->number (send c-input get-value))
-                                           "\neixo X  "(findXv(string->number (send a-input get-value)) (string->number (send b-input get-value)))
-                                           "\neixo Y " (findYv (string->number (send a-input get-value)) (string->number (send b-input get-value)) (string->number (send c-input get-value)))
-                                           "\nBhaskara "( bhaskara (string->number (send a-input get-value)) (string->number (send b-input get-value)) (string->number (send c-input get-value)))))
+                  (write-file "resultadosBhaskara.txt"  ( ~a "A: " (string->number (send a-input get-value))
+                                             "\nB: " (string->number (send b-input get-value))
+                                             "\nC: " (string->number (send c-input get-value))
+                                           "\neixo X:  "(findXv(string->number (send a-input get-value)) (string->number (send b-input get-value)))
+                                           "\neixo Y: " (findYv (string->number (send a-input get-value)) (string->number (send b-input get-value)) (string->number (send c-input get-value)))
+                                           "\nBhaskara: "( bhaskara (string->number (send a-input get-value)) (string->number (send b-input get-value)) (string->number (send c-input get-value)))))
                   (display (~a "\neixo X  "))
                   (display (show-Xv(string->number (send a-input get-value))   (string->number (send b-input get-value))))
                   (display (~a "\neixo Y  "))
@@ -52,7 +52,6 @@
                   (display( show-results (string->number (send a-input get-value))   (string->number (send b-input get-value)) (string->number (send c-input get-value)))))]))
                             
 (send my-window show #t)
-
 
 
 ;calcula o delta
@@ -80,19 +79,19 @@
   (write(bhaskara a b c))
  )
 
-
+;calcula o vertice X
 (define (findXv a b)
   (/ ( - b )(* 2 a))
 )
-
 (define(show-Xv a b)
    (write(findXv a b))
 )
 
+
+;calcula o vertice Y
 (define (findYv a b c)
  (/ (-(-( * b b) ( * 4 a c))) (* 4 a))
 )
-
 (define(show-Yv a b c)
    (write(findYv a b c))
 )
