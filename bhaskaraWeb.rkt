@@ -1,5 +1,5 @@
 ;Documentacoes Utilizadas: https://docs.racket-lang.org/continue/, https://docs.racket-lang.org/web-server/run.html
-;http://matt.might.net/articles/low-level-web-in-racket/  (principalmente para o envio de dados do form).
+;http://matt.might.net/articles/low-level-web-in-racket/  
 
 ; biblioteca
 #lang racket
@@ -12,26 +12,32 @@
 ; Iniciar web
 (define (bhaskara-web req)
   
-  ; definicoes para pegar do form e enviar para a outra pagina
-  (define uri (request-uri req))
-  (define path (map path/param-path (url-path uri)))    
-  (define page (car path))
+  ; definicoes para pegar dados do form e enviar para a outra pagina
+(define uri (request-uri req))
+(define path (map path/param-path (url-path uri)))    
+(define page (car path))
   
   (cond 
     [(equal? page "index") ; pagina 1
   
      (response/xexpr
       `(html
-        (head (title "Bhaskara - LISP"))
+        (head (title "Bhaskara - Icaro e Eduardo"))
         (body (center(h1  "Calcular Bhaskara")
                (center(h1 "Paradigmas da Computação"))
            (p "Programa para calcular equações do segundo grau.")
            (p "Alunos: Ícaro Peretti e Eduardo Rampon Meireles")
-           (p "Digite os valores de A, B e C (caso não tenha o valor de um deles,digite 1 no lugar):")
-           (form ([method "POST"] [action "/resultado"]);envia via post para a pagina resultado
+           (p "Digite os valores de A, B e C (caso não tenha o valor de um deles,digite 1 ou -1(se for negativo) no lugar):")
+           
+           ;envia via post para a pagina resultado
+           (form ([method "POST"] [action "/resultado"])
                " A  " (input ([type "number"] [name "a"]))
+               (br)
+               (br)
                " B  " (input ([type "number"] [name "b"]))
-               " C  " (input ([type "number"] [name "c"])) " = 0 "
+                (br)
+                (br)
+               " C  " (input ([type "number"] [name "c"]))
                (br)
                (br)
                (input ([type "submit"] [value "Calcular"])))))))] 
@@ -61,7 +67,7 @@
      ; imprimir os dados
      (response/xexpr
       `(html
-        (head (title "Bhaskara - LISP"))
+        (head (title "Bhaskara - Icaro e Eduardo") )
         
         (body (center(h1  "Resultados")
          (p "Delta = ", (number->string delta))
@@ -71,7 +77,8 @@
          (p "Vertice Y = " , (number->string vY))
          (input ([type "button"] [value "Voltar"][onclick "location.href='/index'"]))
          (br) ))))]
-    [else     ; pagina nao foi encontrada
+     ; pagina nao foi encontrada
+    [else    
      (response/xexpr
       `(html
         (body
@@ -80,6 +87,6 @@
 ; Configurar web
 (serve/servlet bhaskara-web
                 #:servlet-path "/index"
-                #:port 8000
+                #:port 8000 ;porta que a pagina ira rodar
                 #:servlet-regexp #rx""
 )
