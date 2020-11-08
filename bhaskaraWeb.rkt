@@ -29,7 +29,7 @@
            (p "Alunos: Ícaro Peretti e Eduardo Rampon Meireles")
            (p "Digite os valores de A, B e C (caso não tenha o valor de um deles,digite 1 ou -1(se for negativo) no lugar):")
            
-           ;envia via post para a pagina resultado
+           ;envia os dados do form via post para a pagina resultado
            (form ([method "POST"] [action "/resultado"])
                " A  " (input ([type "number"] [name "a"]))
                (br)
